@@ -1,9 +1,7 @@
 package fr.istic.taa.endomondo.model;
 
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Date;
+import java.util.List;
 
 public class Seance
 {	

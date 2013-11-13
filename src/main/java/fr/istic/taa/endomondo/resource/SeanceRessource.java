@@ -36,8 +36,6 @@ public class SeanceRessource {
     			return s;
     	}
 		return null;   		
-	}
-	
-	
+	}	
 	
 }
