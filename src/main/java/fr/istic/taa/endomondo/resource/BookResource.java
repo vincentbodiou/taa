@@ -1,5 +1,5 @@
 
-package fr.istic.taa.yeoman;
+package fr.istic.taa.endomondo.resource;
 
 import java.util.ArrayList;
 import java.util.Collection;

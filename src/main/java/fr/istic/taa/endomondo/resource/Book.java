@@ -1,4 +1,4 @@
-package fr.istic.taa.yeoman;
+package fr.istic.taa.endomondo.resource;
 
 public class Book {
 
@@ -6,6 +6,7 @@ public class Book {
     private String title;
     private String author;
     private int note;
+    
     public Book() {
     }
 
