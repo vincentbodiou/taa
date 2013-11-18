@@ -20,7 +20,7 @@ public class SeanceRessource {
 	public SeanceRessource()
 	{
 		listeSeance = new ArrayList<Seance>();
-		listeSeance.add(new Seance(0,"duree", 120, "vitesse", "40Kcal", null,null));
+		listeSeance.add(new Seance(0,"duree", 120, "vitesse", "40Kcal", null));
 	}
 	
 	@GET

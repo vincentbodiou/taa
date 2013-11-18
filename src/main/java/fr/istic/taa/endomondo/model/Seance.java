@@ -1,22 +1,41 @@
 package fr.istic.taa.endomondo.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Seance
-{	
-	private int id;
-	private String duree;	
-	private double distance;	
-	private String vitesse;
-	private String calories;	
-	private Date date;	
-	private List<Utilisateur> utilisateur;	
 
-		
+
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.*;
+
+@Entity
+public class Seance implements Serializable
+{	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "duree", nullable = true)
+	private String duree;	
+	@Column(name = "distance", nullable = true)
+	private double distance;	
+	@Column(name = "vitesse", nullable = true)
+	private String vitesse;
+	@Column(name = "calories", nullable = true)
+	private String calories;	
+	@Column(name = "date", nullable = true)
+	private Date date;	
+	//private Set<Utilisateur> utilisateur;	
 	
 	public Seance(int id,String duree, double distance, String vitesse,
-			String calories, Date date, List<Utilisateur> utilisateur){
+			String calories, Date date){
 		super();
 		this.setId(id);
 		this.duree = duree;
@@ -24,8 +43,10 @@ public class Seance
 		this.vitesse = vitesse;
 		this.calories = calories;
 		this.date = date;
-		this.utilisateur = utilisateur;
+		//this.utilisateur = utilisateur;
 	}
+	
+	public Seance() {}
 
 
 	public String getDuree() {
@@ -78,14 +99,14 @@ public class Seance
 	}
 
 
-	public List<Utilisateur> getUtilisateur() {
-		return utilisateur;
-	}
-
-
-	public void setUtilisateur(List<Utilisateur> utilisateur) {
-		this.utilisateur = utilisateur;
-	}
+//	public Set<Utilisateur> getUtilisateur() {
+//		return utilisateur;
+//	}
+//
+//
+//	public void setUtilisateur(Set<Utilisateur> utilisateur) {
+//		this.utilisateur = utilisateur;
+//	}
 
 	public int getId() {
 		return id;
