@@ -10,19 +10,19 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import fr.istic.taa.endomondo.model.Seance;
 import fr.istic.taa.endomondo.service.IService;
 
-public abstract class Resource<T> {
+public abstract class Resource<T> implements IResource<T> {
 
 	protected IService<T> service;
 	
+	@SuppressWarnings("unchecked")
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Collection<T> get() {		
 		return (Collection<T>) service.get();
 	}
-
+ 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("search/{id}")

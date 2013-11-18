@@ -20,7 +20,6 @@ public abstract class Service<T> implements IService<T> {
 	        ParameterizedType pt = (ParameterizedType) t;
 	        type = (Class) pt.getActualTypeArguments()[0];
 	}
-
 	
 	@Override
 	public T create(T obj) {
@@ -44,6 +43,7 @@ public abstract class Service<T> implements IService<T> {
 	}
 	
 
+	@SuppressWarnings("unchecked")
 	public Collection<Seance> get() {
 		Query query = MyManager.getInstance().createQuery("SELECT e FROM " + type.getSimpleName() +" e");
 	    return query.getResultList();
