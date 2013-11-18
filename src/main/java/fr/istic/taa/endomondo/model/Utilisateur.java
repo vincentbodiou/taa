@@ -1,12 +1,25 @@
 package fr.istic.taa.endomondo.model;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Date;
 
-public class Utilisateur
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@SuppressWarnings("serial")
+@Entity
+public class Utilisateur implements Serializable
 {	
-	private double id;
+	@Id
+	@GeneratedValue
+	private int id;
+	
 	private String nom;
 	private String prenom;
 	private Date dateNaissance;
@@ -17,8 +30,14 @@ public class Utilisateur
 	private String facebook;
 	private String twitter;
 	private String mail;
-	private Set<Seance> seance;
-	private Set<Utilisateur> amis;
+	
+	@OneToMany
+	private Collection<Seance> seance;
+	
+	@OneToMany
+	private Collection<Utilisateur> amis;
+	
+	public Utilisateur(){}
 	
 	public Utilisateur(String nom, String prenom, Date date, double poids, int taille,
 			String sexe, String pseudo, String mail){
@@ -36,7 +55,7 @@ public class Utilisateur
 		return id;
 	}
 
-	public void setId(double id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -120,19 +139,19 @@ public class Utilisateur
 		this.mail = mail;
 	}
 
-	public Set<Seance> getSeance() {
+	public Collection<Seance> getSeance() {
 		return seance;
 	}
 
-	public void setSeance(Set<Seance> seance) {
+	public void setSeance(Collection<Seance> seance) {
 		this.seance = seance;
 	}
 
-	public Set<Utilisateur> getAmis() {
+	public Collection<Utilisateur> getAmis() {
 		return amis;
 	}
 
-	public void setAmis(Set<Utilisateur> amis) {
+	public void setAmis(Collection<Utilisateur> amis) {
 		this.amis = amis;
 	}
 

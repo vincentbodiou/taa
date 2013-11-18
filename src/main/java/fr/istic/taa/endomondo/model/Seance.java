@@ -1,6 +1,7 @@
 package fr.istic.taa.endomondo.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -13,26 +14,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.*;
 
+@SuppressWarnings("serial")
 @Entity
 public class Seance implements Serializable
 {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "duree", nullable = true)
+	
 	private String duree;	
-	@Column(name = "distance", nullable = true)
 	private double distance;	
-	@Column(name = "vitesse", nullable = true)
-	private String vitesse;
-	@Column(name = "calories", nullable = true)
+	private String vitesse;	
 	private String calories;	
-	@Column(name = "date", nullable = true)
 	private Date date;	
-	//private Set<Utilisateur> utilisateur;	
+	
 	
 	public Seance(int id,String duree, double distance, String vitesse,
 			String calories, Date date){
@@ -43,7 +42,6 @@ public class Seance implements Serializable
 		this.vitesse = vitesse;
 		this.calories = calories;
 		this.date = date;
-		//this.utilisateur = utilisateur;
 	}
 	
 	public Seance() {}
@@ -97,16 +95,6 @@ public class Seance implements Serializable
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-
-//	public Set<Utilisateur> getUtilisateur() {
-//		return utilisateur;
-//	}
-//
-//
-//	public void setUtilisateur(Set<Utilisateur> utilisateur) {
-//		this.utilisateur = utilisateur;
-//	}
 
 	public int getId() {
 		return id;
