@@ -12,4 +12,6 @@ public interface IService<T> {
 
 	public abstract Collection<Seance> get();
 
+	public abstract int remove(int id);
+
 }

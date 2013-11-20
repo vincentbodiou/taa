@@ -2,14 +2,11 @@ package fr.istic.taa.endomondo.model;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @SuppressWarnings("serial")

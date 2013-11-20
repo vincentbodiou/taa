@@ -7,4 +7,6 @@ public class SeanceService extends Service<Seance> {
 	public SeanceService() {
 		super();
 	}
+
+	
 }

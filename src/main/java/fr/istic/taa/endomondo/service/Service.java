@@ -14,13 +14,13 @@ import java.lang.reflect.Type;
 public abstract class Service<T> implements IService<T> {
 
 	private Class<T> type;
-	
+
 	public Service() {
-		 	Type t = getClass().getGenericSuperclass();
-	        ParameterizedType pt = (ParameterizedType) t;
-	        type = (Class) pt.getActualTypeArguments()[0];
+		Type t = getClass().getGenericSuperclass();
+		ParameterizedType pt = (ParameterizedType) t;
+		type = (Class) pt.getActualTypeArguments()[0];
 	}
-	
+
 	@Override
 	public T create(T obj) {
 		// Begin a transaction
@@ -41,11 +41,20 @@ public abstract class Service<T> implements IService<T> {
 	public T get(int id) {
 		return MyManager.getInstance().find(type, id);
 	}
-	
+
+	public int remove(int id) {
+		try {
+			MyManager.getInstance().detach(MyManager.getInstance().find(type, id));
+			return id;
+		} catch (IllegalArgumentException e) {
+			return -1;
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public Collection<Seance> get() {
-		Query query = MyManager.getInstance().createQuery("SELECT e FROM " + type.getSimpleName() +" e");
-	    return query.getResultList();
+		Query query = MyManager.getInstance().createQuery(
+				"SELECT e FROM " + type.getSimpleName() + " e");
+		return query.getResultList();
 	}
 }
