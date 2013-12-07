@@ -8,18 +8,11 @@ angular.module('yoApp', ['ngResource'])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+	  .when('/seance', {
+	    templateUrl: 'views/seance.html',
+		controller: 'seanceCtrl'
+	  })
       .otherwise({
         redirectTo: '/'
       });
   });
-/*angular.module('yoApp', ['ui.calendar']).config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });*/
-

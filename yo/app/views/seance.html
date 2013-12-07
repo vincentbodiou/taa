@@ -1,0 +1,16 @@
+<div>
+ <p> <h2> Voici vos différentes séances enregistrées. <h2/>
+	
+	<div ng-repeat="seance in seances">
+		<h3>Séance {{seance.id}}</h3><br/>
+		Date de la séance : {{seance.date}} <br/>
+		Calories dépensées : {{seance.calories}}<br/>
+		Distance parcourrue : {{seance.distance}}<br/>
+		Vitesse : {{seance.vitesse}} <br/>
+	</div>
+	<br/>
+	<br/>
+	<br/>
+	<h3> Change cette valeur pour changer celle de la distance de la séance 1</h3>
+	<input ng-model="seances.0.distance">
+</div>
