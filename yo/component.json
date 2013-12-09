@@ -5,13 +5,14 @@
     "angular": "1.0.5",
     "angular-resource": "1.0.5",
     "bootstrap": "2.3.1",
-    "angular-ui-calendar": "latest"
+    "angular-ui-calendar": "latest",
+	"jquery": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.0.5",
     "angular-scenario": "1.0.5"
   },
   "resolutions": {
-    "jquery": "~1.10.2"
+    
   }
 }
