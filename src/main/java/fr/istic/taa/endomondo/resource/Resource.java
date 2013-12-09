@@ -45,7 +45,7 @@ public abstract class Resource<T> implements IResource<T>
 
     @GET
     @Produces( { MediaType.APPLICATION_JSON } )
-    @Path( "search/{id}" )
+    @Path( "/{id}" )
     public Response get( @PathParam( "id" ) int id )
     {
         return Response.ok(service.get(id) )
@@ -56,7 +56,7 @@ public abstract class Resource<T> implements IResource<T>
     
     @OPTIONS
     @Produces( { MediaType.APPLICATION_JSON } )
-    @Path( "search/{id}" )
+    @Path( "/{id}" )
     public Response getOpt( @PathParam( "id" ) int id )
     {
         return Response.ok(service.get(id) )
@@ -77,7 +77,7 @@ public abstract class Resource<T> implements IResource<T>
     }
 
     @DELETE
-    @Path( "delete/{id}" )
+    @Path( "/{id}" )
     @Produces( { MediaType.APPLICATION_JSON } )
     public int delete( @PathParam( "id" ) int id )
     {

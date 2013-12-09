@@ -58,17 +58,16 @@ public abstract class Service<T> implements IService<T>
         {
             tx = manager.getTransaction();
             tx.begin();
-            Seance seanceToDelete = (Seance) MyManager.getInstance().find( type, id );
-            MyManager.getInstance().remove( seanceToDelete );
+            T objToDelete = (T) MyManager.getInstance().find( type, id );
+            MyManager.getInstance().remove( objToDelete );
             tx.commit();
             return id;
         }
         catch ( RuntimeException e )
         {
-            if ( tx != null && tx.isActive() )
-                tx.rollback();
-            return -1;
+            System.err.println(e);
         }
+        return -1;
     }
 
     @SuppressWarnings( "unchecked" )
