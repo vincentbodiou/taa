@@ -11,8 +11,5 @@ angular.module('yoApp', ['ngResource'])
 	  .when('/seance', {
 	    templateUrl: 'views/seance.html',
 		controller: 'seanceCtrl'
-	  })
-      .otherwise({
-        redirectTo: '/'
-      });
+	  });
   });
