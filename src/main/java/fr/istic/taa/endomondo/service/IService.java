@@ -10,8 +10,10 @@ public interface IService<T> {
 
 	public abstract T get(int id);
 
-	public abstract Collection<Seance> get();
+	public abstract Collection<T> get();
 
 	public abstract int remove(int id);
+
+    public abstract T put( int id, T obj );
 
 }

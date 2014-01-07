@@ -9,5 +9,7 @@ public interface IResource<T> {
 	public abstract Response get(int id);
 
 	public abstract Response create(T obj);
+	
+	public abstract Response delete(int id);
 
 }

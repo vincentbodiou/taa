@@ -1,5 +1,7 @@
 package fr.istic.taa.endomondo.service;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -7,14 +9,9 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import fr.istic.taa.endomondo.manager.MyManager;
-import fr.istic.taa.endomondo.model.Seance;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 public abstract class Service<T> implements IService<T>
 {
-
     private Class<T> type;
 
     public Service()
@@ -65,15 +62,34 @@ public abstract class Service<T> implements IService<T>
         }
         catch ( RuntimeException e )
         {
-            System.err.println(e);
+            System.err.println( e );
         }
         return -1;
     }
 
-    @SuppressWarnings( "unchecked" )
-    public Collection<Seance> get()
+    public Collection<T> get()
     {
-        Query query = MyManager.getInstance().createQuery( "SELECT e FROM " + type.getSimpleName() + " e" );
+        Query query = MyManager.getInstance().createQuery( "FROM " + type.getSimpleName() + " e" );
         return query.getResultList();
+    }
+
+    public T put( int id, T obj )
+    {
+        EntityTransaction tx = null;
+        EntityManager manager = MyManager.getInstance();
+        try
+        {
+            tx = manager.getTransaction();
+            tx.begin();
+            MyManager.getInstance().merge( obj );
+            tx.commit();
+            return obj;
+        }
+        catch ( RuntimeException e )
+        {
+            System.err.println( e );
+        }
+        return null;
+
     }
 }

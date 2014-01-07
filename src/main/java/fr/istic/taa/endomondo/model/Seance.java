@@ -2,10 +2,15 @@ package fr.istic.taa.endomondo.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.codehaus.jackson.annotate.JsonBackReference;
 
 @SuppressWarnings("serial")
 @Entity
@@ -19,9 +24,11 @@ public class Seance implements Serializable
 	private double distance;	
 	private String vitesse;	
 	private String calories;	
-	private Date date;	
+	private Date date;
 	
-	
+	@ManyToOne
+	private Utilisateur user;
+		
 	public Seance(int id,String duree, double distance, String vitesse,
 			String calories, Date date){
 		super();
@@ -33,9 +40,19 @@ public class Seance implements Serializable
 		this.date = date;
 	}
 	
-	public Seance() {}
+    public Seance() {}
+	
+    @JsonBackReference
+    public Utilisateur getUser()
+    {
+        return user;
+    }
 
-
+    public void setUser( Utilisateur user )
+    {
+        this.user = user;
+    }
+    
 	public String getDuree() {
 		return duree;
 	}

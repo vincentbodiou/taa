@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @SuppressWarnings("serial")
 @Entity
 public class Utilisateur implements Serializable
@@ -28,11 +30,11 @@ public class Utilisateur implements Serializable
 	private String twitter;
 	private String mail;
 	
-	@OneToMany
+	@OneToMany(mappedBy="user")
 	private Collection<Seance> seance;
 	
-	@OneToMany
-	private Collection<Utilisateur> amis;
+	//@OneToMany
+	//private Collection<Utilisateur> amis;
 	
 	public Utilisateur(){}
 	
@@ -136,6 +138,7 @@ public class Utilisateur implements Serializable
 		this.mail = mail;
 	}
 
+	@JsonManagedReference
 	public Collection<Seance> getSeance() {
 		return seance;
 	}
@@ -144,13 +147,14 @@ public class Utilisateur implements Serializable
 		this.seance = seance;
 	}
 
+	/*
 	public Collection<Utilisateur> getAmis() {
 		return amis;
 	}
 
 	public void setAmis(Collection<Utilisateur> amis) {
 		this.amis = amis;
-	}
+	}*/
 
 }
 
