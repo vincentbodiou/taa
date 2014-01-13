@@ -68,8 +68,9 @@ angular.module('yoApp')
 		$scope.editMode = true;
 	}
 	
-	$scope.editSeance = function()
+	$scope.editSeance = function(){
 		$scope.curSeance.$save();
 		$scope.editMode = false;
-		$scope.curSeance = new Seance();		
+		$scope.curSeance = new Seance();
+	}
   });
