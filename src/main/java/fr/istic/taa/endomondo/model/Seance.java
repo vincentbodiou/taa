@@ -25,8 +25,10 @@ public class Seance implements Serializable
 	private String vitesse;	
 	private String calories;	
 	private Date date;
-	
-	@ManyToOne
+	private String titre;
+
+
+    @ManyToOne
 	private Utilisateur user;
 		
 	public Seance(int id,String duree, double distance, String vitesse,
@@ -110,6 +112,17 @@ public class Seance implements Serializable
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	   
+    public String getTitre()
+    {
+        return titre;
+    }
+
+    public void setTitre( String titre )
+    {
+        this.titre = titre;
+    }
 
 }
 

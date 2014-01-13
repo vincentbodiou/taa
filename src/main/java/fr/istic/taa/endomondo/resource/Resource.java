@@ -25,18 +25,16 @@ public abstract class Resource<T> implements IResource<T>
     @Produces( { MediaType.APPLICATION_JSON } )
     public Response getOpt()
     {
-        return Response.ok( (Collection<T>) service.get() ).header( "Access-Control-Allow-Origin", "*" ).header( "Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS" )
-            .header( "Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With" ).build();
+        return buildResponseOk( (Collection<T>) service.get() );
     }
 
     @GET
     @Produces( { MediaType.APPLICATION_JSON } )
     public Response get()
     {
-        return Response.ok( (Collection<T>) service.get() ).header( "Access-Control-Allow-Origin", "*" ).header( "Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS" )
-            .header( "Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With" ).build();
+        return buildResponseOk( (Collection<T>) service.get() );
     }
-
+    
     @GET
     @Produces( { MediaType.APPLICATION_JSON } )
     @Path( "/{id}" )
@@ -46,8 +44,7 @@ public abstract class Resource<T> implements IResource<T>
         if ( r == null )
             return Response.status( 204 ).build(); // ou 404
 
-        return Response.ok( r ).header( "Access-Control-Allow-Origin", "*" ).header( "Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS" )
-            .header( "Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With" ).build();
+        return buildResponseOk( r );
     }
 
     @OPTIONS
@@ -59,8 +56,7 @@ public abstract class Resource<T> implements IResource<T>
         if ( r == null )
             return Response.status( 204 ).build(); // ou 404
 
-        return Response.ok( r ).header( "Access-Control-Allow-Origin", "*" ).header( "Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS" )
-            .header( "Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With" ).build();
+        return buildResponseOk( r );
     }
 
     @POST
@@ -73,8 +69,7 @@ public abstract class Resource<T> implements IResource<T>
         if ( res == null )
             return Response.status( 400 ).build();
 
-        return Response.ok( res ).header( "Access-Control-Allow-Origin", "*" ).header( "Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS" )
-            .header( "Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With" ).build();
+        return buildResponseOk( res );
     }
 
     @DELETE
@@ -94,6 +89,14 @@ public abstract class Resource<T> implements IResource<T>
     public Response put( @PathParam( "id" ) int id, T obj )
     {
         return Response.ok( service.put( id, obj ) ).build();
+    }
+    
+    protected Response buildResponseOk(Object o)
+    {
+        return Response.ok(o)
+        .header("Access-Control-Allow-Origin", "*")
+        .header("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS")
+        .header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
     }
 
 }

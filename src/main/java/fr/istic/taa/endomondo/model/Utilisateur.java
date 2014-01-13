@@ -4,12 +4,15 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
+import org.hibernate.annotations.Cascade;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -30,7 +33,7 @@ public class Utilisateur implements Serializable
 	private String twitter;
 	private String mail;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "user")
 	private Collection<Seance> seance;
 	
 	//@OneToMany
