@@ -54,7 +54,7 @@ angular.module('yoApp')
 	
 	$scope.addNewSeance = function(){
 	
-		seances.push($scope.curSeance);
+		$scope.seances.push($scope.curSeance);
 		$scope.curSeance.$save();
 		$scope.curSeance = new Seance();
 		
