@@ -2,11 +2,11 @@
 
 angular.module('yoApp')
   .controller('seanceCtrl', function ($scope, $resource) {
-	var ENR = "Enregistrer la séance";
+	var ENR = "Enregistrer la sÃ©ance";
 	var MOD = "Enregistrer les modifications";
 	$scope.buttonLabel = ENR;
-	var Seance = $resource('/rest/user/:userid/seance/:seanceid',{userid:'toto'});
-    var seances = [
+	var Seance = $resource('/rest/user/:userid/seance/:seanceid',{userid:'1'});
+    /*var seances = [
 	{
 		"titre":"Course a pied au parc",
 		"date":741034000,
@@ -48,9 +48,9 @@ angular.module('yoApp')
             "twitter":null,
             "mail":"vincent.bodiou3@gmail.com"
         }
-	}];
+	}];*/
 	$scope.curSeance = new Seance();
-    $scope.seances = seances;
+    $scope.seances = Seance.query();
 	
 	$scope.addNewSeance = function(){
 	
