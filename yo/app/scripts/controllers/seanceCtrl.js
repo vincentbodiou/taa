@@ -2,10 +2,13 @@
 
 angular.module('yoApp')
   .controller('seanceCtrl', function ($scope, $resource) {
-	var ENR = "Enregistrer la séance";
-	var MOD = "Enregistrer les modifications";
-	$scope.buttonLabel = ENR;
-	var Seance = $resource('/rest/user/:userid/seance/:seanceid',{userid:'1'});
+
+	var seanceEditPosition;
+	var seanceEdit;
+	
+	$scope.editMode = false;
+	
+	var Seance = $resource('/taa/rest/user/:userid/seance/:seanceid',{userid:'1'});
     /*var seances = [
 	{
 		"titre":"Course a pied au parc",
@@ -60,13 +63,13 @@ angular.module('yoApp')
 		
 	}
 	
-	$scope.editSeance = function(s){
-	
-		$scope.seances.indexOf(s);
+	$scope.startEdit = function(s){
 		$scope.curSeance = s;
-		$scope.buttonLabel = MOD;
-		
+		$scope.editMode = true;
 	}
 	
-	
+	$scope.editSeance = function()
+		$scope.curSeance.$save();
+		$scope.editMode = false;
+		$scope.curSeance = new Seance();		
   });

@@ -11,7 +11,7 @@
 		Vitesse : {{seance.vitesse}} km/h <br/>
 		<br/>
 		<div class="btn-group">
-		  <button ng-click="editSeance(seance)" type="button" class="btn btn-default">Modifier</button>
+		  <button ng-click="startEdit(seance)" type="button" class="btn btn-default">Modifier</button>
 		  <button ng-click="removeSeance(seance)" type="button" class="btn btn-default">Supprimer</button>
 		</div>
 	</div>
@@ -25,7 +25,8 @@
 		<input ng-model="curSeance.vitesse" type="text" class="span2" placeholder="Vitesse">
 		<input ng-model="curSeance.duree" type="text" class="span2" placeholder="Durée"><br/>
 		<br/>
-		<button ng-click="addNewSeance()" type="submit" class="btn">{{buttonLabel}}</button>
+		<button ng-hide="editMode" ng-click="addNewSeance()" type="submit" class="btn">Enregistrer la séance</button>
+		<button ng-hide="!editMode" ng-click="editSeance()" type="submit" class="btn">Modifier la séance</button>
     </form>
 	<br/>
 	<br/>
