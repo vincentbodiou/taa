@@ -8,7 +8,7 @@ angular.module('yoApp', ['ngResource'])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-	  .when('/seance', {
+	  .when('/:username/seance', {
 	    templateUrl: 'views/seance.html',
 		controller: 'seanceCtrl'
 	  });

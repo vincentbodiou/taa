@@ -1,20 +1,33 @@
 <div class="hero-unit"">
-  <h2> Voici vos différentes séances enregistrées. <h2/>
+  <h2> Voici vos différentes séances enregistrées. {{toto}}<h2/>
 	
 	<div ng-repeat="seance in seances">
-		<h3>Séance {{seance.id}}</h3>
+	<br/>
+	<h3>{{seance.titre}}</h3>
 		Date de la séance : {{seance.date}} <br/>
-		Calories dépensées : {{seance.calories}}<br/>
-		Distance parcourue : {{seance.distance}}<br/>
-		Vitesse : {{seance.vitesse}} <br/>
+		Calories dépensées : {{seance.calories}} cal<br/>
+		Distance parcourue : {{seance.distance}} km<br/>
+		Durée : {{seance.duree}}<br/>
+		Vitesse : {{seance.vitesse}} km/h <br/>
+		<br/>
+		<div class="btn-group">
+		  <button ng-click="editSeance(seance)" type="button" class="btn btn-default">Modifier</button>
+		  <button ng-click="removeSeance(seance)" type="button" class="btn btn-default">Supprimer</button>
+		</div>
 	</div>
 	<br/>
 	<br/>
 	<form class="navbar-form pull-left">
-		<input type="text" class="span2" placeholder="Date de la séance">
-		<input type="text" class="span2" placeholder="Calories dépensées">
-		<input type="text" class="span2" placeholder="Distance parcourue">
-		<input type="text" class="span2" placeholder="Vitesse">
-		<button type="submit" class="btn">Submit</button>
+		<input ng-model="curSeance.titre" type="text" class="span2" placeholder="Titre">
+		<input ng-model="curSeance.date" type="text" class="span2" placeholder="Date">
+		<input ng-model="curSeance.calories" type="text" class="span2" placeholder="Calories dépensées"><br/>
+		<input ng-model="curSeance.distance" type="text" class="span2" placeholder="Distance parcourue">
+		<input ng-model="curSeance.vitesse" type="text" class="span2" placeholder="Vitesse">
+		<input ng-model="curSeance.duree" type="text" class="span2" placeholder="Durée"><br/>
+		<br/>
+		<button ng-click="addNewSeance()" type="submit" class="btn">{{buttonLabel}}</button>
     </form>
+	<br/>
+	<br/>
+	<br/>
 </div>
