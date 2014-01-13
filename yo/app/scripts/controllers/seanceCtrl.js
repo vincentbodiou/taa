@@ -8,7 +8,7 @@ angular.module('yoApp')
 	
 	$scope.editMode = false;
 	
-	var Seance = $resource('/TAA/rest/user/:userid/seance/:seanceid',{userid:'1'});
+	var Seance = $resource('htpp://localhost:8080/TAA/rest/user/:userid/seance/:seanceid',{userid:'1'});
     /*var seances = [
 	{
 		"titre":"Course a pied au parc",
