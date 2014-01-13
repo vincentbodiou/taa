@@ -8,7 +8,7 @@ angular.module('yoApp')
 	
 	$scope.editMode = false;
 	
-	var Seance = $resource('http://localhost:8080/TAA/rest/user/:userid/seance/:seanceid',{userid:'1'});
+	var Seance = $resource('/TAA/rest/user/:userid/seance/:seanceid',{userid:'1',seanceid:'@id'});
     /*var seances = [
 	{
 		"titre":"Course a pied au parc",
@@ -56,7 +56,9 @@ angular.module('yoApp')
     $scope.seances = Seance.query();
 	
 	$scope.addNewSeance = function(){
-	
+		$scope.curSeance.user = {
+								  "id":1
+								};
 		$scope.seances.push($scope.curSeance);
 		$scope.curSeance.$save();
 		$scope.curSeance = new Seance();
@@ -72,5 +74,11 @@ angular.module('yoApp')
 		$scope.curSeance.$save();
 		$scope.editMode = false;
 		$scope.curSeance = new Seance();
+	}
+	
+	$scope.removeSeance = function(s){
+		var index = $scope.seances.indexOf(s);
+		s.$remove();
+		$scope.seances.splice(index,1);
 	}
   });
