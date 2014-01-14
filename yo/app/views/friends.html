@@ -1,7 +1,7 @@
 <div class="hero-unit"">
 	<h2> Votre liste d'amis <h2/>
-	<div ng-repeat="friend in firendlist">
-		<h1>{{friend.pseudo}}</h1>
+	<div ng-repeat="friend in friendlist">
+		<h2>{{friend.pseudo}}</h2>
 		Nom : {{friend.nom}} {{friend.prenom}}<br/>
 		Poids : {{friend.poids}}kg <br/>
 		Taille : {{friend.taille}}cm <br/>
@@ -9,12 +9,12 @@
 		mail : {{friend.mail}} <br/>
 		<button ng-click="rmFriend(friend)" type="button" class="btn btn-default">Supprimer</button>
 	</div>
-	<br/>
+	<br/>{{test}}
 	<div class="alert alert-info">
 		<p> Vous souhaitez ajouter un nouvel ami ? Chercher le dans la liste ci-dessous</p>
 	</div>
-	<div ng-repeat="user in userlist">
-		<span>{{user.pseudo}}</span> 
-		<button ng-click="addFriend(user)" type="button" class="btn btn-default">Ajouter</button>
+	<div ng-repeat="newFriend in userlist">
+		<span>{{newFriend.pseudo}}</span> 
+		<button ng-click="addFriend(newFriend)" type="button" class="btn btn-default">Ajouter</button>
 	</div>
 </div>
