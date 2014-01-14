@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
+
+import fr.istic.taa.endomondo.model.sport.Sport;
 
 @SuppressWarnings("serial")
 @Entity
@@ -27,7 +30,9 @@ public class Seance implements Serializable
 	private Date date;
 	private String titre;
 
-
+	@OneToOne
+	private Sport sport;
+	
     @ManyToOne
 	private Utilisateur user;
 		

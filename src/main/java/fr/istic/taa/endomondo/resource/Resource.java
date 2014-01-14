@@ -83,7 +83,7 @@ public abstract class Resource<T> implements IResource<T>
             return Response.status( 400 ).build();
     }
 
-    @PUT
+    @POST
     @Path( "/{id}" )
     @Produces( { MediaType.APPLICATION_JSON } )
     public Response put( @PathParam( "id" ) int id, T obj )
