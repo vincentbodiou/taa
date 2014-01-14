@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 import fr.istic.taa.endomondo.model.sport.Sport;
 
@@ -33,6 +34,7 @@ public class Seance implements Serializable
 	
 
     @OneToOne
+    @JsonManagedReference
 	private Sport sport;
 	
     @ManyToOne
