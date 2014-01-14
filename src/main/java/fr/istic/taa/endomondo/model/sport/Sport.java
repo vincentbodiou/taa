@@ -7,10 +7,19 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonSubTypes.Type;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
 import fr.istic.taa.endomondo.model.Seance;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME,include = JsonTypeInfo.As.PROPERTY,property = "type")
+@JsonSubTypes({  
+    @Type(value = Athletisme.class),  
+    @Type(value = Nautique.class)
+    })  
 public abstract class Sport
 {
     @Id

@@ -30,7 +30,9 @@ public class Seance implements Serializable
 	private Date date;
 	private String titre;
 
-	@OneToOne
+	
+
+    @OneToOne
 	private Sport sport;
 	
     @ManyToOne
@@ -127,6 +129,16 @@ public class Seance implements Serializable
     public void setTitre( String titre )
     {
         this.titre = titre;
+    }
+    
+    public Sport getSport()
+    {
+        return sport;
+    }
+
+    public void setSport( Sport sport )
+    {
+        this.sport = sport;
     }
 
 }
