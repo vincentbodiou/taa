@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
@@ -36,10 +37,11 @@ public class Utilisateur implements Serializable
 	@OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "user")
 	private Collection<Seance> seance;
 	
-	//@OneToMany
-	//private Collection<Utilisateur> amis;
+	//pas de mapped by pour les self referencing => ce qui permet de créer une "table d'association"
+	@OneToMany
+	private Collection<Utilisateur> amis;
 	
-	public Utilisateur(){}
+    public Utilisateur(){}
 	
 	public Utilisateur(String nom, String prenom, Date date, double poids, int taille,
 			String sexe, String pseudo, String mail){
@@ -53,7 +55,7 @@ public class Utilisateur implements Serializable
 		this.taille = taille;
 	}
 
-	public double getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -150,14 +152,15 @@ public class Utilisateur implements Serializable
 		this.seance = seance;
 	}
 
-	/*
-	public Collection<Utilisateur> getAmis() {
-		return amis;
-	}
+    public Collection<Utilisateur> getAmis()
+    {
+        return amis;
+    }
 
-	public void setAmis(Collection<Utilisateur> amis) {
-		this.amis = amis;
-	}*/
+    public void setAmis( Collection<Utilisateur> amis )
+    {
+        this.amis = amis;
+    }
 
 }
 

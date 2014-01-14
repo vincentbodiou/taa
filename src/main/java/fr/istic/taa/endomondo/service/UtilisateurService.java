@@ -69,7 +69,7 @@ public class UtilisateurService extends Service<Utilisateur> implements IUtilisa
     }
 
     @Override
-    public int updateSeance(int userId, Seance s )
+    public Seance updateSeance(int userId, Seance s )
     {
         EntityTransaction tx = null;
         EntityManager manager = MyManager.getInstance();
@@ -84,6 +84,29 @@ public class UtilisateurService extends Service<Utilisateur> implements IUtilisa
             objToUpdate.setDuree( s.getDuree() );
             objToUpdate.setTitre( s.getTitre() );
             objToUpdate.setVitesse( s.getVitesse() );
+            tx.commit();
+            return s;
+        }
+        catch ( RuntimeException e )
+        {
+            System.err.println( e );
+        }
+        return null;
+    }
+
+    @Override
+    public int addFriend( int iduser, int idAmis )
+    {
+        EntityTransaction tx = null;
+        EntityManager manager = MyManager.getInstance();
+        try
+        {
+            tx = manager.getTransaction();
+            tx.begin();
+            Utilisateur userToAdd = (Utilisateur) MyManager.getInstance().find( Utilisateur.class, idAmis );
+            Utilisateur user = (Utilisateur) MyManager.getInstance().find( Utilisateur.class, iduser );
+            
+            user.getAmis().add( userToAdd );
             tx.commit();
             return 0;
         }

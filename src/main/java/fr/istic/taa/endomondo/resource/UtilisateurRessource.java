@@ -71,6 +71,15 @@ public class UtilisateurRessource extends Resource<Utilisateur> implements IUtil
         return buildResponseOk(servUser.updateSeance(iduser, s ));
     }
     
+    @POST
+    @Produces( { MediaType.APPLICATION_JSON } )
+    @Path( "/{id_user}/amis" )
+    public Response addFriend( @PathParam( "id_user" ) int iduser, Utilisateur u )
+    {
+        System.out.println("on passe par le addFriend");
+        return buildResponseOk(servUser.addFriend(iduser, u.getId() ));
+    }
+    
     
     
 
