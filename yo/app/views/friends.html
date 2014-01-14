@@ -13,7 +13,8 @@
 	<div class="alert alert-info">
 		<p> Vous souhaitez ajouter un nouvel ami ? Chercher le dans la liste ci-dessous</p>
 	</div>
-	<div ng-repeat="newFriend in userlist">
+	Recherche : <input ng-model="query">
+	<div ng-repeat="newFriend in userlist | filter:query ">
 		<span>{{newFriend.pseudo}}</span> 
 		<button ng-click="addFriend(newFriend)" type="button" class="btn btn-default">Ajouter</button>
 	</div>

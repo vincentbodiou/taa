@@ -6,9 +6,10 @@ angular.module('yoApp').controller('friendsCtrl', function($scope, $resource, $h
 	$scope.user = User.get({userid:1}, function(){
 		$scope.friendlist = $scope.user.amis;
 	});
-	//$scope.friendlist = [{pseudo:"Vince",nom:"Baudiou",prenom:"Vincent"},{pseudo:'Okazari',nom:"Plouzennec",prenom:"Benjamin"}];
-	$scope.userlist = User.$query;
-	//$scope.userlist = [{pseudo:"Zrechim",nom:"Odermatt", prenom:"Laurent"},{pseudo:"Halta",nom:"Monvoisin",prenom:"Jean Louis"}];
+	$scope.friendlist = [{pseudo:"Vince",nom:"Baudiou",prenom:"Vincent"},{pseudo:'Okazari',nom:"Plouzennec",prenom:"Benjamin"}];
+	$scope.userlist = [];
+	$scope.userlist = User.query(function(){});
+	$scope.userlist = [{pseudo:"Zrechim",nom:"Odermatt", prenom:"Laurent"},{pseudo:"Halta",nom:"Monvoisin",prenom:"Jean Louis"}];
 	
 	$scope.rmFriend = function(friend){
 		
