@@ -1,0 +1,15 @@
+<div class="hero-unit"">
+	<h2> Votre liste d'amis <h2/>
+	<br/>
+	<a href="#/users" type="button" class="btn btn-default">Ajouter un ami</a>
+	
+	<div ng-repeat="friend in user.amis">
+		<h1>{{Pseudo}}</h1>
+		Nom : {{friend.nom}} {{friend.prenom}}
+		Poids : {{friend.poids}}kg <br/>
+		Taille : {{friend.taille}}cm <br/>
+		Sexe : {{friend.sexe}} <br/>
+		mail : {{friend.mail}} <br/>
+	</div>
+	
+</div>
