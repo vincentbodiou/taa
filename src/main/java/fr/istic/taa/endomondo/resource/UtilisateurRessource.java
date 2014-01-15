@@ -58,7 +58,6 @@ public class UtilisateurRessource extends Resource<Utilisateur> implements IUtil
     @Path( "/{id_user}/seance/{id_seance}" )
     public Response deleteSeance( @PathParam( "id_user" ) int iduser,@PathParam( "id_seance" ) int idSeance )
     {
-        System.out.println("on passe par le delete");
         return buildResponseOk(servUser.deleteSeance( idSeance ));
     }
     
@@ -67,7 +66,6 @@ public class UtilisateurRessource extends Resource<Utilisateur> implements IUtil
     @Path( "/{id_user}/seance/{id_seance}" )
     public Response updateSeance( @PathParam( "id_user" ) int iduser, Seance s )
     {
-        System.out.println("on passe par le update");
         return buildResponseOk(servUser.updateSeance(iduser, s ));
     }
     
@@ -76,11 +74,7 @@ public class UtilisateurRessource extends Resource<Utilisateur> implements IUtil
     @Path( "/{id_user}/amis" )
     public Response addFriend( @PathParam( "id_user" ) int iduser, Utilisateur u )
     {
-        System.out.println("on passe par le addFriend");
         return buildResponseOk(servUser.addFriend(iduser, u.getId() ));
-    }
-    
-    
-    
+    }    
 
 }

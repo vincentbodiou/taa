@@ -1,5 +1,7 @@
 package fr.istic.taa.endomondo.model.sport;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +24,7 @@ import fr.istic.taa.endomondo.model.Seance;
     @Type(value = Athletisme.class),  
     @Type(value = Nautique.class)
     })  
-public abstract class Sport
+public abstract class Sport implements Serializable
 {
     @Id
     @GeneratedValue

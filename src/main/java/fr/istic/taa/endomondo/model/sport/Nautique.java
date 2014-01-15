@@ -1,11 +1,13 @@
 package fr.istic.taa.endomondo.model.sport;
 
+import java.io.Serializable;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Nautique")
-public class Nautique extends Sport
+public class Nautique extends Sport implements Serializable
 {
     private String marqueBateau;
     
