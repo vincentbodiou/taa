@@ -34,8 +34,9 @@ public abstract class Service<T> implements IService<T>
             tx.commit();
             return obj;
         }
-        catch ( RuntimeException e )
+        catch ( Exception e )
         {
+            e.printStackTrace();
             if ( tx != null && tx.isActive() )
                 tx.rollback();
             return null;
@@ -44,7 +45,15 @@ public abstract class Service<T> implements IService<T>
 
     public T get( int id )
     {
-        return MyManager.getInstance().find( type, id );
+        try
+        {
+            return MyManager.getInstance().find( type, id );
+        }
+        catch ( Exception e )
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public int remove( int id )
@@ -60,9 +69,9 @@ public abstract class Service<T> implements IService<T>
             tx.commit();
             return id;
         }
-        catch ( RuntimeException e )
+        catch ( Exception e )
         {
-            System.err.println( e );
+            e.printStackTrace();
         }
         return -1;
     }
@@ -73,7 +82,7 @@ public abstract class Service<T> implements IService<T>
         return query.getResultList();
     }
 
-    public T put( int id, T obj )
+    public T update( int id, T obj )
     {
         EntityTransaction tx = null;
         EntityManager manager = MyManager.getInstance();
@@ -85,9 +94,9 @@ public abstract class Service<T> implements IService<T>
             tx.commit();
             return obj;
         }
-        catch ( RuntimeException e )
+        catch ( Exception e )
         {
-            System.err.println( e );
+            e.printStackTrace();
         }
         return null;
 

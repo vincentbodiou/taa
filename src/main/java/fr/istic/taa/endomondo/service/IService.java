@@ -14,6 +14,6 @@ public interface IService<T> {
 
 	public abstract int remove(int id);
 
-    public abstract T put( int id, T obj );
+    public abstract T update( int id, T obj );
 
 }
